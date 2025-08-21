@@ -13,7 +13,7 @@ export default function RiddleAnagram() {
       nextStep="/riddles/4"
       validate={() => input.trim().toLowerCase() === answer}
     >
-      <p className="riddle-question">taream</p>
+      <p className="riddle-question">bnbsuf</p>
       <input
         type="text"
         className="riddle-input"
