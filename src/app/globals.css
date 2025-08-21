@@ -1,42 +1,175 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
+/* === Estilos globales románticos para la página de acertijos === */
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #ffe6f0, #f0e6ff);
+  color: #333;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.riddle-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.riddle-card {
+  width: 100%;
+  /* max-width: 1000px; */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.riddle-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #a33f8e;
+}
+
+.riddle-question {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.riddle-input {
+  width: 80%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.riddle-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  background: #d47abf;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.riddle-button:hover {
+  background: #d47abf;
+}
+
+.riddle-button:disabled,
+.riddle-button[aria-disabled="true"] {
+  background: #f5c8e2;
+  cursor: not-allowed;
+}
+
+.riddle-hint {
+  background: #fff0f5;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #f5a9d0;
+}
+
+.riddle-feedback {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.riddle-feedback.success {
+  color: green;
+}
+
+.riddle-feedback.error {
+  color: red;
+}
+
+.riddle-status {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.riddle-confetti {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.highlight-letter {
+  background: #fff0f6;
+  color: #d6336c;
+  font-weight: 700;
+  border-bottom: 2px solid #d6336c;
+  padding: 0 2px;
+  border-radius: 4px;
+}
+
+.response-word {
+  margin: 0 0.25rem;
+  display: inline-block;
+}
+
+.final-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: #fff0f6;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-family: "Georgia", serif;
+}
+
+.final-container h1 {
+  color: #d6336c;
+  margin-bottom: 1rem;
+}
+
+.timers p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+.poem {
+  margin-top: 2rem;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.poem input {
+  border: none;
+  border-bottom: 2px solid #d6336c;
+  background: transparent;
+  text-align: center;
+  font-size: 1.1rem;
+  width: 6rem;
+  color: #d6336c;
+  font-weight: bold;
+}
+
+.poem-finish {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #ffe3ec;
+  border-radius: 1rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
