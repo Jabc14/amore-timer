@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function FinalPage() {
   const targetDate = new Date("2025-08-30T00:00:00");
@@ -12,12 +12,14 @@ export default function FinalPage() {
   const [isCompleted, setIsCompleted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const bottomRef = useRef<HTMLDivElement>(null);
+
   // Palabras correctas de cada acertijo
   const requiredWords = {
     word1: "amarte",
-    word3: "afortunado",
-    word4: "encantas",
-    word5: "amor",
+    word2: "afortunado",
+    word3: "encantas",
+    word4: "amor",
   };
 
   useEffect(() => {
@@ -43,6 +45,16 @@ export default function FinalPage() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (isCompleted && bottomRef.current) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      bottomRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [isCompleted]);
 
   const handleChange = (key: string, value: string) => {
     setAnswers({ ...answers, [key]: value });
@@ -79,9 +91,9 @@ export default function FinalPage() {
         <p>
           En cada instante recuerdo lo mucho que me
           <input
-            value={answers.word4 || ""}
+            value={answers.word3 || ""}
             onChange={(e) =>
-              handleChange("word4", e.target.value.toLowerCase().trim())
+              handleChange("word3", e.target.value.toLowerCase().trim())
             }
           />{" "}
           .
@@ -89,9 +101,9 @@ export default function FinalPage() {
         <p>
           Me siento el más{" "}
           <input
-            value={answers.word3 || ""}
+            value={answers.word2 || ""}
             onChange={(e) =>
-              handleChange("word3", e.target.value.toLowerCase().trim())
+              handleChange("word2", e.target.value.toLowerCase().trim())
             }
           />{" "}
           por tenerte en mi vida.
@@ -100,9 +112,9 @@ export default function FinalPage() {
         <p>
           Y cuando llegue ese momento, deseo compartir contigo mi{" "}
           <input
-            value={answers.word5 || ""}
+            value={answers.word4 || ""}
             onChange={(e) =>
-              handleChange("word5", e.target.value.toLowerCase().trim())
+              handleChange("word4", e.target.value.toLowerCase().trim())
             }
           />
           , como expresión de todo lo que siento.
@@ -114,27 +126,30 @@ export default function FinalPage() {
       </button>
 
       {isCompleted && (
-        <div className="poem-finish">
+        <div className="poem-finish" ref={bottomRef}>
           <h2>💖 ¡Lo lograste, mi vida! 💖</h2>
           <div className="timers">
             <p>
-              ⏳ Han pasado:{" "}
+              ⏳ Han pasado: <br />
               <strong>
                 {timePassed.d}d {timePassed.h}h {timePassed.m}m {timePassed.s}s
               </strong>{" "}
-              desde que comenzó nuestra historia de amor.
+              <br />
+              desde que comenzamos a construir nuestro camino juntos.
             </p>
             <p>
-              ❤️ Ya faltan solo:{" "}
+              ❤️ Ya faltan solo: <br />
               <strong>
                 {timeLeft.d}d {timeLeft.h}h {timeLeft.m}m {timeLeft.s}s
               </strong>{" "}
+              <br />
               para hacerlo realidad, mi princesita guerrera.
             </p>
           </div>
           <p>
             Y así comenzará lo nuestro, con ternura, pasión y entrega.{" "}
             <strong>
+              <br />
               <br />
               Maite zaitut per sempre 💕
             </strong>
